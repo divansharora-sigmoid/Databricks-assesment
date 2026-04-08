@@ -1,0 +1,218 @@
+{
+  "datasets": [
+    {
+      "name": "85e66033",
+      "displayName": "query1",
+      "queryLines": [
+        "SELECT department_name, total_monthly_payroll FROM gold.dept_payroll_summary"
+      ],
+      "catalog": "hr_catalog_divansh",
+      "schema": "gold"
+    },
+    {
+      "name": "over_budget",
+      "displayName": "Under Budget Headcount",
+      "queryLines": [
+        "SELECT\n",
+        "  *\n",
+        "FROM\n",
+        "  gold.headcount_vs_budget\n",
+        "WHERE\n",
+        "  budget_status = 'Under Budget'"
+      ],
+      "catalog": "hr_catalog_divansh",
+      "schema": "gold"
+    }
+  ],
+  "pages": [
+    {
+      "name": "b87ae25b",
+      "displayName": "Dashboard",
+      "layout": [
+        {
+          "widget": {
+            "name": "f37906e3",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "85e66033",
+                  "fields": [
+                    {
+                      "name": "department_name",
+                      "expression": "`department_name`"
+                    },
+                    {
+                      "name": "total_monthly_payroll",
+                      "expression": "`total_monthly_payroll`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Total Monthly Payroll by Department",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "department_name",
+                  "displayName": "Department",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "total_monthly_payroll",
+                  "displayName": "Total Monthly Payroll",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "department_name",
+                  "legend": {
+                    "hide": true
+                  },
+                  "displayName": "Department",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "a7b99a8a",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "over_budget",
+                  "fields": [
+                    {
+                      "name": "department_name",
+                      "expression": "`department_name`"
+                    },
+                    {
+                      "name": "location",
+                      "expression": "`location`"
+                    },
+                    {
+                      "name": "head_count_budget",
+                      "expression": "`head_count_budget`"
+                    },
+                    {
+                      "name": "actual_headcount",
+                      "expression": "`actual_headcount`"
+                    },
+                    {
+                      "name": "headcount_variance",
+                      "expression": "`headcount_variance`"
+                    },
+                    {
+                      "name": "budget_status",
+                      "expression": "`budget_status`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Under Budget Departments",
+                "showTitle": true
+              },
+              "rowsPerPage": 25,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "department_name",
+                    "displayName": "Department"
+                  },
+                  {
+                    "fieldName": "location",
+                    "displayName": "Location"
+                  },
+                  {
+                    "fieldName": "head_count_budget",
+                    "displayName": "Budget Headcount"
+                  },
+                  {
+                    "fieldName": "actual_headcount",
+                    "displayName": "Actual Headcount"
+                  },
+                  {
+                    "fieldName": "headcount_variance",
+                    "displayName": "Variance"
+                  },
+                  {
+                    "fieldName": "budget_status",
+                    "displayName": "Status"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "canvasBackgroundColor": {
+        "light": "#FAFAFB",
+        "dark": "#1F272D"
+      },
+      "widgetBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#11171C"
+      },
+      "fontColor": {
+        "light": "#11171C",
+        "dark": "#E8ECF0"
+      },
+      "selectionColor": {
+        "light": "#2272B4",
+        "dark": "#8ACAFF"
+      },
+      "visualizationColors": [
+        "#077A9D",
+        "#FFAB00",
+        "#00A972",
+        "#FF3621",
+        "#8BCAE7",
+        "#AB4057",
+        "#99DDB4",
+        "#FCA4A1",
+        "#919191",
+        "#BF7080"
+      ],
+      "widgetHeaderAlignment": "LEFT"
+    },
+    "applyModeEnabled": false
+  }
+}
